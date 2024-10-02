@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  whaticket_backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    image: whaticket-backend:latest
+
+  whaticket_frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    image: whaticket-frontend:latest
