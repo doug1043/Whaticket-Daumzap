@@ -2,7 +2,7 @@
 FROM node:20-alpine AS build-deps
 
 # Instala dependências adicionais antes do build
-RUN apk add --no-cache jq curl unzip git
+RUN apk add --no-cache jq curl unzip git dotenv
 
 # Configuração de trabalho
 WORKDIR /usr/src/app
@@ -22,7 +22,7 @@ RUN REACT_APP_BACKEND_URL=$(grep REACT_APP_BACKEND_URL .env | cut -d '=' -f2) &&
 FROM node:20-alpine
 
 # Instala dependências adicionais (se precisar de pacotes extras no runtime)
-RUN apk add --no-cache jq curl unzip git
+RUN apk add --no-cache jq curl unzip git dotenv
 
 # Configuração de trabalho
 WORKDIR /usr/src/app
