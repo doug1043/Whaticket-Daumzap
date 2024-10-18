@@ -7,40 +7,40 @@ services:
     environment:
       # BACKEND
       - NODE_ENV=docker
-      - BACKEND_URL= # Url do backend
-      - FRONTEND_URL= # Url do frontend
-      - PROXY_PORT=443 # Porta de proxy deixe padrão
-      - PORT=3250 # Porta deixe padrão
-      - DOMINIO= # Dominio (pode ser o mesmo usado no REACT_APP_BACKEND_URL)
-      - PURCHASE_KEY= # Sua chave de compra, disponível em https://daumzap.com.br após fazer login vá no seu perfil e depois em itens adiquiridos, copie a chave
+      - BACKEND_URL= #Sua url backend
+      - FRONTEND_URL= #Sua url frontend
+      - PROXY_PORT=443 #dDeixe padrão
+      - PORT=3250 #Deixe padrão
+      - DOMINIO= #Sua url backend
+      - PURCHASE_KEY= #Sua chave de compra, disponível em https://daumzap.com.br após fazer login vá no seu perfil e depois em itens adiquiridos, copie a chave
 
-      - TIMEOUT_TO_IMPORT_MESSAGE=999 # deixe padrão
-      - FLUSH_REDIS_ON_START=true # deixe padrão
-      - DEBUG_TRACE=false # deixe padrão
-      - CHATBOT_RESTRICT_NUMBER= # deixe padrão
-      - BROWSER_CLIENT=Daumzap # Aqui você pode alterar
-      - BROWSER_NAME=Chrome # Deixe padrão
-      - BROWSER_VERSION=10.0 # Deixe padrão
+      - TIMEOUT_TO_IMPORT_MESSAGE=999 #deixe padrão
+      - FLUSH_REDIS_ON_START=true #deixe padrão
+      - DEBUG_TRACE=false #deixe padrão
+      - CHATBOT_RESTRICT_NUMBER= #deixe padrão
+      - BROWSER_CLIENT=Daumzap #Aqui você pode alterar
+      - BROWSER_NAME=Chrome #Deixe padrão
+      - BROWSER_VERSION=10.0 #Deixe padrão
 
       # POSTGRES
-      - DB_HOST=postgres_whaticket # Deixe padrão
-      - DB_DIALECT=postgres # Não altere
-      - DB_USER= # Nome de usuario para o banco de dados
-      - DB_PASS= # Senha para acesso banco de dados
-      - DB_NAME=whaticket # Nome do banco de dados
-      - DB_PORT=5432 # Porta deixe padrão
+      - DB_HOST=postgres_whaticket #Deixe padrão
+      - DB_DIALECT=postgres #Não altere
+      - DB_USER= #Nome de usuario para o banco de dados
+      - DB_PASS= #Senha para acesso banco de dados
+      - DB_NAME=whaticket #Nome do banco de dados
+      - DB_PORT=5432 #Porta deixe padrão
 
       # REDIS
-      - REDIS_URI=redis://:suasenha@127.0.0.1:6379 # Url de acesso ao REDIS
-      - REDIS_HOST=127.0.0.1 # host, deixe padrão
-      - REDIS_PORT=6379 # Porta deixe padrão
-      - REDIS_PASSWORD=suasenha # usuario redis
-      - REDIS_OPT_LIMITER_MAX=1 # Deixe padrão
-      - REDIS_OPT_LIMITER_DURATION=3000 # Deixe padrão
+      - REDIS_URI=redis://:suasenha@127.0.0.1:6379 #Url de acesso ao REDIS
+      - REDIS_HOST=whaticket_redis #host, deixe padrão
+      - REDIS_PORT=6379 #Porta deixe padrão
+      - REDIS_PASSWORD=suasenha #usuario redis
+      - REDIS_OPT_LIMITER_MAX=1 #Deixe padrão
+      - REDIS_OPT_LIMITER_DURATION=3000 #Deixe padrão
 
       # USER LIMIT
-      - USER_LIMIT=10000 # deixe padrão
-      - CONNECTIONS_LIMIT=100000 # deixe padrão
+      - USER_LIMIT=10000 #deixe padrão
+      - CONNECTIONS_LIMIT=100000 #deixe padrão
 
       #MAIL
       - MAIL_HOST=
@@ -62,15 +62,15 @@ services:
     depends_on:
       - whaticket_backend
     environment:
-      - REACT_APP_BACKEND_URL= # Digite aqui a url do backend
-      - REACT_APP_BACKEND_PROTOCOL=https # Digite aqui o protocolo
-      - REACT_APP_BACKEND_HOST= # Digite seu host (pode ser o mesmo url digitado no REACT_APP_BACKEND_URL)
-      - REACT_APP_BACKEND_PORT=443 # Porta backend, deixe padrão
-      - REACT_APP_HOURS_CLOSE_TICKETS_AUTO=24 # Deixe padrão
-      - REACT_APP_LOCALE=pt-br # Deixe padrão
-      - REACT_APP_TIMEZONE=America/Sao_Paulo # Deixe padrão
-      - REACT_APP_FACEBOOK_APP_ID= # Deixe vazio
-      - REACT_ENABLE_SAAS=true # Deixe padrão
+      - REACT_APP_BACKEND_URL= #Digite aqui a url do backend
+      - REACT_APP_BACKEND_PROTOCOL=https #Digite aqui o protocolo
+      - REACT_APP_BACKEND_HOST= #Digite seu host (pode ser o mesmo url digitado no REACT_APP_BACKEND_URL)
+      - REACT_APP_BACKEND_PORT=443 #Porta backend, deixe padrão
+      - REACT_APP_HOURS_CLOSE_TICKETS_AUTO=24 #Deixe padrão
+      - REACT_APP_LOCALE=pt-br #Deixe padrão
+      - REACT_APP_TIMEZONE=America/Sao_Paulo #Deixe padrão
+      - REACT_APP_FACEBOOK_APP_ID= #Deixe vazio
+      - REACT_ENABLE_SAAS=true #Deixe padrão
     restart: always
     networks:
       - whaticket
@@ -82,17 +82,17 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=whaticket # Nome do banco de dados
-      - POSTGRES_USER= # configure o nome de usuario do banco de dados
-      - POSTGRES_PASSWORD= # Configure sua senha do Postgres
-      - TZ=America/Sao_Paulo # Deixe padrão
+      - POSTGRES_DB=whaticket #Nome do banco de dados
+      - POSTGRES_USER= #configure o nome de usuario do banco de dados
+      - POSTGRES_PASSWORD= #configure sua senha do Postgres
+      - TZ=America/Sao_Paulo #Deixe padrão
     restart: always
     networks:
       - whaticket
 
   whaticket_redis:
     image: redis:latest
-    command: redis-server --requirepass "suasenha" # Configure sua senha do Redis
+    command: redis-server --requirepass "suasenha" #Configure sua senha do Redis
     volumes:
       - redis-data:/data
     restart: always
