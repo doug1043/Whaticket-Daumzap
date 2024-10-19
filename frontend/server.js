@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const { exec } = require("child_process"); // Importa o módulo child_process
 const app = express();
-const PORT = process.env.PORT || 3000; // Porta definida pela variável de ambiente ou 3000
+const PORT = process.env.PORT || 3250; // Porta definida pela variável de ambiente ou 3000
 
 // Serve os arquivos estáticos da pasta 'build'
 app.use(express.static(path.join(__dirname, "build")));
