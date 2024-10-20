@@ -1,4 +1,4 @@
-![Daumzap]( "Daumzap")
+![Daumzap](https://i.imgur.com/1yMnN6H.png "Daumzap")
 
 ## Daumzap
 
