@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { exec } = require("child_process"); // Importa o módulo child_process
