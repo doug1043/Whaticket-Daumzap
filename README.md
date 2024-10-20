@@ -1,4 +1,4 @@
-![Daumzap](https://i.imgur.com/1yMnN6H.png "Daumzap")
+![Daumzap](https://i.imgur.com/FOBQbYB.png "Daumzap")
 
 ## Daumzap
 
