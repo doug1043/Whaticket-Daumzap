@@ -1,0 +1,43 @@
+Licença de Uso - Daumzap
+
+Termos e Condições para Cópia, Distribuição e Modificação
+
+Introdução:
+
+Esta Licença de Uso regula os termos sob os quais você pode utilizar o software Daumzap. Ao utilizar o software, você aceita e concorda com todos os termos e condições impostos por esta licença.
+
+Uso de Licença:
+
+O uso deste software é permitido somente se você adquirir uma licença comercial válida da Daumzap. Qualquer uso sem a devida licença é proibido. O software inclui uma fase de avaliação temporária e limitada, após a qual a continuidade do uso está sujeita à obtenção de uma licença paga. Cada licença concede o uso do software para uma única URL.
+
+Proibição de Cópia, Modificação e Distribuição:
+
+É estritamente proibido copiar, modificar, fundir, publicar, distribuir, sublicenciar e/ou vender cópias do código-fonte ou do software, exceto em casos em que o código-fonte tenha sido adquirido. Se você adquirir o código-fonte do Daumzap, terá o direito de comercializá-lo, vender e sublicenciar o software livremente. Fora dessa condição, este software não pode ser modificado de forma alguma, incluindo, mas não se limitando a, descompilar, desmontar ou aplicar engenharia reversa.
+
+Isenção de Responsabilidade:
+
+Este software é fornecido "como está", sem qualquer tipo de garantia, expressa ou implícita. Os autores e detentores dos direitos não serão responsáveis por quaisquer reivindicações, danos ou outras obrigações decorrentes do uso do software.
+
+Serviços de Terceiros:
+
+O Daumzap utiliza diversos serviços de terceiros para seu funcionamento, incluindo, mas não se limitando a:
+
+Baileys - WhatsApp Web API
+Redis
+PostgreSQL
+Docker
+Nginx
+Node
+PM2
+Certbot
+Devido à dependência desses serviços de terceiros, o Daumzap não pode garantir 100% de disponibilidade ou pleno funcionamento contínuo do sistema. Eventuais falhas ou indisponibilidades dos serviços de terceiros podem impactar o desempenho e funcionamento do Daumzap.
+
+Solicitação de Licença:
+
+Para utilizar o sistema Daumzap, é necessário solicitar uma chave de licença através do e-mail: contato@daumzap.com.br.
+
+Conclusão:
+
+O uso do software Daumzap implica a aceitação incondicional dos termos desta licença. Qualquer violação dos termos resultará em medidas legais apropriadas.
+
+© [2024] Daumzap. Todos os direitos reservados.
