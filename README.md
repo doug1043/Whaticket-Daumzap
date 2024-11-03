@@ -26,7 +26,7 @@ Descubra como nossa solução integra o WhatsApp com **DialogFlow**, **N8N**, **
 - **Rede Local**: Ideal para empresas que preferem rodar o sistema internamente com mais segurança.
 - **VPS**: Para quem busca facilidade de hospedagem em servidores externos.
 - **Tunelamento com CloudFlare**: Integrando segurança e estabilidade.
-- **Docker + Portainer + Tunelamento CloudFlare**: Solução automatizada e flexível.
+- **Docker (Standalone ou Swarm) + Portainer + Tunelamento CloudFlare**: Solução automatizada e flexível.
 
 ---
 
