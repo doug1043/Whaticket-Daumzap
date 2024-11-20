@@ -50,7 +50,7 @@ RUN chmod +x upgrade_frontend.sh
 RUN chmod +x change_url.sh
 
 # Expõe a porta para o servidor
-EXPOSE 3250
+# EXPOSE 3250
 
 # Comando para iniciar o servidor
 CMD ["node", "server.js"]

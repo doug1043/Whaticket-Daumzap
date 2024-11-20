@@ -11,14 +11,14 @@ RUN npm install
 COPY . .
 
 
-ENV NODE_ENV=docker
-ENV PORT=3000
+# ENV NODE_ENV=docker
+# ENV PORT=3000
 
 # script de migrate e seed
 COPY check-and-seed.sh ./
 RUN chmod +x check-and-seed.sh
 RUN chmod +x upgrade_backend.sh
 
-EXPOSE 3000
+# EXPOSE 3000
 
 CMD sh ./check-and-seed.sh && node dist/server.js
