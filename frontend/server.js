@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const { exec } = require("child_process"); // Importa o módulo child_process
 const app = express();
-const PORT = process.env.PORT || 3250; // Porta definida pela variável de ambiente ou 3250
+const PORT = process.env.FRONTEND_PORT || 3250; // Porta definida pela variável de ambiente ou 3250
 
 // Serve os arquivos estáticos da pasta 'build'
 app.use(express.static(path.join(__dirname, "build")));
@@ -34,6 +34,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html")); // Serve o index.html para qualquer rota
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(FRONTEND_PORT, () => {
+  console.log(`Server running on port ${FRONTEND_PORT}`);
 });
