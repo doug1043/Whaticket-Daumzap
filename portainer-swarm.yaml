@@ -46,6 +46,7 @@ services:
   whaticket_frontend:
     image: whaticket-frontend:latest
     environment:
+      - FRONTEND_PORT=${FRONTEND_PORT}
       - REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL}
       - REACT_APP_BACKEND_PROTOCOL=${REACT_APP_BACKEND_PROTOCOL}
       - REACT_APP_BACKEND_HOST=${REACT_APP_BACKEND_HOST}
