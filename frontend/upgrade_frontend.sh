@@ -123,7 +123,7 @@ rm -f "$TMP_FILE" "$TMP_MANIFEST"
 # Verifica o ambiente e executa as ações apropriadas
 if [ "$NODE_ENV" = "docker" ]; then
     echo "Ambiente Docker detectado. Reiniciando o sistema..."
-    sudo reboot
+    reboot
 else
     echo "Ambiente PM2 detectado. Reiniciando o serviço frontend..."
     # Extrai o nome da pasta pai do frontend para usar como base do nome do processo PM2
