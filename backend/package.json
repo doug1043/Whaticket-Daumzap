@@ -1,6 +1,6 @@
 {
   "name": "daumzap-backend",
-  "version": "3.0",
+  "version": "3.2.3",
   "description": "",
   "main": "index.js",
   "scripts": {

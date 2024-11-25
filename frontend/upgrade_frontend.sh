@@ -1,16 +1,31 @@
 #!/bin/sh
 
-# Lê a variável de ambiente REACT_APP_BACKEND_URL do arquivo .env
+# Lê as variáveis de ambiente do arquivo .env
 REACT_APP_BACKEND_URL=$(grep REACT_APP_BACKEND_URL .env | cut -d '=' -f2)
+NODE_ENV=$(grep NODE_ENV .env | cut -d '=' -f2)
 
 # URL da API do GitHub para obter a última release
-GITHUB_REPO="doug1043/Whaticket-Daumzap"  # Altere para o seu repositório
+GITHUB_REPO="doug1043/Whaticket-Daumzap"  
 GITHUB_API_URL="https://api.github.com/repos/$GITHUB_REPO/releases/latest"
 
 # Caminho temporário para o arquivo .zip
 FILE_NAME="build.zip"
-TMP_FILE="/tmp/$FILE_NAME"
-TMP_MANIFEST="/tmp/manifest.json"
+TMP_FILE="/tmp/frontend_$FILE_NAME"
+TMP_MANIFEST="/tmp/frontend_manifest.json"
+
+# Define o diretório base baseado no ambiente
+if [ "$NODE_ENV" = "docker" ]; then
+    BASE_DIR="/usr/src/app"
+else
+    # Procura pelo diretório frontend em /home/deploy/*/frontend
+    FRONTEND_DIR=$(find /home/deploy -maxdepth 2 -type d -name "frontend" | head -n 1)
+    if [ -z "$FRONTEND_DIR" ]; then
+        echo "Nenhum diretório frontend encontrado em /home/deploy/*/frontend"
+        exit 1
+    fi
+    BASE_DIR="$FRONTEND_DIR"
+    echo "Diretório frontend encontrado: $BASE_DIR"
+fi
 
 # Remove o build.zip antigo se existir
 if [ -f "$TMP_FILE" ]; then
@@ -44,7 +59,6 @@ else
 fi
 
 # Extrai apenas o arquivo manifest.json do build.zip para comparação
-TMP_MANIFEST="/tmp/manifest.json"
 unzip -p "$TMP_FILE" "build/manifest.json" > "$TMP_MANIFEST"
 
 if [ ! -f "$TMP_MANIFEST" ]; then
@@ -61,7 +75,7 @@ fi
 echo "Versão do manifest baixado: $DOWNLOADED_VERSION"
 
 # Lê a versão do manifest do projeto atual
-CURRENT_MANIFEST="/usr/src/app/build/manifest.json"
+CURRENT_MANIFEST="$BASE_DIR/build/manifest.json"
 if [ -f "$CURRENT_MANIFEST" ]; then
   CURRENT_VERSION=$(jq -r '.version' "$CURRENT_MANIFEST")
 else
@@ -79,12 +93,12 @@ echo "Versão baixada ($DOWNLOADED_VERSION) é maior que a atual ($CURRENT_VERSI
 
 # Remove o build antigo e arquivos relacionados
 echo "Removendo a pasta build antiga e os arquivos de configuração antigos..."
-rm -rf /usr/src/app/build
-rm -f /usr/src/app/package.json /usr/src/app/package-lock.json
+rm -rf "$BASE_DIR/build"
+rm -f "$BASE_DIR/package.json" "$BASE_DIR/package-lock.json"
 
 # Descompacta o arquivo .zip baixado
 echo "Descompactando o arquivo .zip..."
-unzip -o "$TMP_FILE" -d /usr/src/app
+unzip -o "$TMP_FILE" -x "build/manifest.json" -d "$BASE_DIR"
 
 # Verifica se a descompactação foi bem-sucedida
 if [ $? -eq 0 ]; then
@@ -96,19 +110,26 @@ fi
 
 # Instala novas dependências
 echo "Instalando novas dependências..."
-cd /usr/src/app
+cd "$BASE_DIR"
 npm install
 
 # Substitui a URL pelo valor da variável de ambiente
 echo "Substituindo a URL no conteúdo dos arquivos..."
-find /usr/src/app/build -type f -exec sed -i "s|https://api.daumzap.com.br|${REACT_APP_BACKEND_URL}|g" {} +
+find "$BASE_DIR/build" -type f -exec sed -i "s|https://api.daumzap.com.br|${REACT_APP_BACKEND_URL}|g" {} +
 
-# Substitui o manifest.json na pasta public
-echo "Substituindo o manifest.json na pasta /usr/src/app/public..."
-cp "$TMP_MANIFEST" "/usr/src/app/public/manifest.json"
+# Limpeza no final do script
+rm -f "$TMP_FILE" "$TMP_MANIFEST"
 
-# Reinicia o servidor
-echo "Reiniciando o servidor..."
-# systemctl restart seu_servico.service  # Substitua 'seu_servico.service' pelo nome do serviço
+# Verifica o ambiente e executa as ações apropriadas
+if [ "$NODE_ENV" = "docker" ]; then
+    echo "Ambiente Docker detectado. Reiniciando o sistema..."
+    sudo reboot
+else
+    echo "Ambiente PM2 detectado. Reiniciando o serviço frontend..."
+    # Extrai o nome da pasta pai do frontend para usar como base do nome do processo PM2
+    PM2_BASE_NAME=$(basename "$(dirname "$BASE_DIR")")
+    echo "Nome base do processo PM2 detectado: $PM2_BASE_NAME"
+    sudo su - deploy -c "pm2 restart $PM2_BASE_NAME-frontend"
+fi
 
 echo "Atualização completa com sucesso!"

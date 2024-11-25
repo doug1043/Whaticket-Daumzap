@@ -1,7 +1,7 @@
 FROM node:20-alpine AS build-deps
 
 # Instalação de dependências necessárias
-RUN apk add --no-cache wget postgresql-client git openssh curl unzip
+RUN apk add --no-cache wget postgresql-client git openssh curl unzip jq
 
 # Configuração de trabalho
 WORKDIR /usr/src/app

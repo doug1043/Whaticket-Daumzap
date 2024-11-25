@@ -1,13 +1,30 @@
 #!/bin/sh
 
+# Lê a variável de ambiente do arquivo .env
+NODE_ENV=$(grep NODE_ENV .env | cut -d '=' -f2)
+
 # Define o repositório e o nome do arquivo
 GITHUB_REPO="doug1043/Whaticket-Daumzap"
 FILE_NAME="dist.zip"
-TMP_FILE="/tmp/$FILE_NAME"
-TMP_MANIFEST="/tmp/manifest.json"
+TMP_FILE="/tmp/backend_$FILE_NAME"
+TMP_MANIFEST="/tmp/backend_manifest.json"
 
 # URL da API do GitHub para obter a última release
 GITHUB_API_URL="https://api.github.com/repos/$GITHUB_REPO/releases/latest"
+
+# Define o diretório base baseado no ambiente
+if [ "$NODE_ENV" = "docker" ]; then
+    BASE_DIR="/usr/src/app"
+else
+    # Procura pelo diretório backend em /home/deploy/*/backend
+    BACKEND_DIR=$(find /home/deploy -maxdepth 2 -type d -name "backend" | head -n 1)
+    if [ -z "$BACKEND_DIR" ]; then
+        echo "Nenhum diretório backend encontrado em /home/deploy/*/backend"
+        exit 1
+    fi
+    BASE_DIR="$BACKEND_DIR"
+    echo "Diretório backend encontrado: $BASE_DIR"
+fi
 
 # Remove o dist.zip antigo se existir
 if [ -f "$TMP_FILE" ]; then
@@ -41,7 +58,6 @@ else
 fi
 
 # Extrai apenas o arquivo manifest.json do dist.zip para comparação
-TMP_MANIFEST="/tmp/manifest.json"
 unzip -p "$TMP_FILE" "manifest.json" > "$TMP_MANIFEST"
 
 if [ ! -f "$TMP_MANIFEST" ]; then
@@ -58,7 +74,7 @@ fi
 echo "Versão do manifest baixado: $DOWNLOADED_VERSION"
 
 # Lê a versão do manifest do projeto atual
-CURRENT_MANIFEST="/usr/src/app/manifest.json"
+CURRENT_MANIFEST="$BASE_DIR/manifest.json"
 if [ -f "$CURRENT_MANIFEST" ]; then
   CURRENT_VERSION=$(jq -r '.version' "$CURRENT_MANIFEST")
 else
@@ -76,11 +92,11 @@ echo "Versão baixada ($DOWNLOADED_VERSION) é maior que a atual ($CURRENT_VERSI
 
 # Remove o dist antigo e arquivos relacionados
 echo "Removendo a pasta dist antiga..."
-rm -rf /usr/src/app/dist
+rm -rf "$BASE_DIR/dist"
 
 # Descompacta o arquivo .zip baixado
 echo "Descompactando o arquivo .zip..."
-unzip -o "$TMP_FILE" -d /usr/src/app
+unzip -o "$TMP_FILE" -d "$BASE_DIR"
 
 if [ $? -ne 0 ]; then
   echo "Erro ao descompactar o arquivo."
@@ -90,11 +106,11 @@ echo "Arquivo descompactado com sucesso."
 
 # Instala novas dependências
 echo "Instalando novas dependências..."
-cd /usr/src/app
+cd "$BASE_DIR"
 npm install
 
-# Substitui o manifest.json na pasta /usr/src/app/public
-echo "Substituindo o manifest.json na pasta /usr/src/app/public..."
+# Substitui o manifest.json
+echo "Substituindo o manifest.json..."
 cp "$TMP_MANIFEST" "$CURRENT_MANIFEST"
 
 # Executa a migração do banco de dados
@@ -108,4 +124,19 @@ else
   exit 1
 fi
 
-echo "Atualização do backend completa."
+# Limpeza no final do script
+rm -f "$TMP_FILE" "$TMP_MANIFEST"
+
+# Verifica o ambiente e executa as ações apropriadas
+if [ "$NODE_ENV" = "docker" ]; then
+    echo "Ambiente Docker detectado. Reiniciando o sistema..."
+    sudo reboot
+else
+    echo "Ambiente PM2 detectado. Reiniciando o serviço backend..."
+    # Extrai o nome da pasta pai do backend para usar como base do nome do processo PM2
+    PM2_BASE_NAME=$(basename "$(dirname "$BASE_DIR")")
+    echo "Nome base do processo PM2 detectado: $PM2_BASE_NAME"
+    sudo su - deploy -c "pm2 restart $PM2_BASE_NAME-backend"
+fi
+
+echo "Atualização do backend completa com sucesso!"
