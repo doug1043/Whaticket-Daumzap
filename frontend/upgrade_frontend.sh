@@ -98,7 +98,7 @@ rm -f "$BASE_DIR/package.json" "$BASE_DIR/package-lock.json"
 
 # Descompacta o arquivo .zip baixado
 echo "Descompactando o arquivo .zip..."
-unzip -o "$TMP_FILE" -x "build/manifest.json" -d "$BASE_DIR"
+unzip -o "$TMP_FILE" -d "$BASE_DIR"
 
 # Verifica se a descompactação foi bem-sucedida
 if [ $? -eq 0 ]; then
