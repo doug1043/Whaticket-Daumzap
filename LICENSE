@@ -9,6 +9,8 @@ Esta Licença de Uso regula os termos sob os quais você pode utilizar o softwar
 Uso de Licença:
 
 O uso deste software é permitido somente mediante a aquisição de uma licença comercial válida da Daumzap. Qualquer uso sem a devida licença é proibido. O software inclui uma fase de avaliação temporária e limitada, após a qual a continuidade do uso estará sujeita à obtenção de uma licença paga.
+Esta licença é válida apenas para o acesso ao instalador e à versão modificada do Whaticket, um projeto open source. A versão modificada é adaptada para permitir instalação local, uso de Docker com Portainer e tunelamento via Cloudflare.
+O Whaticket é um projeto open source, disponível no GitHub através do link https://github.com/canove/whaticket-community. A Daumzap fornece uma versão adaptada para facilitar a instalação e utilização em ambientes locais.
 
 Existem duas modalidades de licença:
 
