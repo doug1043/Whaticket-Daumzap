@@ -4,40 +4,70 @@ Termos e Condições para Cópia, Distribuição e Modificação
 
 Introdução:
 
-Esta Licença de Uso regula os termos sob os quais você pode utilizar o software Daumzap. Ao utilizar o software, você aceita e concorda com todos os termos e condições impostos por esta licença.
+Esta Licença de Uso regula os termos sob os quais você pode utilizar o software Daumzap. Ao utilizar o software, você aceita e concorda com todos os termos e condições estabelecidos nesta licença.
 
 Uso de Licença:
 
-O uso deste software é permitido somente se você adquirir uma licença comercial válida da Daumzap. Qualquer uso sem a devida licença é proibido. O software inclui uma fase de avaliação temporária e limitada, após a qual a continuidade do uso está sujeita à obtenção de uma licença paga. Cada licença concede o uso do software para uma única URL.
+O uso deste software é permitido somente mediante a aquisição de uma licença comercial válida da Daumzap. Qualquer uso sem a devida licença é proibido. O software inclui uma fase de avaliação temporária e limitada, após a qual a continuidade do uso estará sujeita à obtenção de uma licença paga.
+Esta licença é válida apenas para o acesso ao instalador e à versão modificada do Whaticket, um projeto open source. A versão modificada é adaptada para permitir instalação local, uso de Docker com Portainer e tunelamento via Cloudflare.
+O Whaticket é um projeto open source, disponível no GitHub através do link https://github.com/canove/whaticket-community. A Daumzap fornece uma versão adaptada para facilitar a instalação e utilização em ambientes locais.
+
+Existem duas modalidades de licença:
+
+1. Licença Básica:
+   - O cliente pode realizar instalações ilimitadas do software.
+   - O código é fornecido de forma ofuscada e não pode ser modificado.
+   - O cliente não pode revender ou sublicenciar a chave de acesso.
+   
+2. Licença Completa:
+   - O cliente recebe o código-fonte completo do software.
+   - Pode modificar, personalizar e revender o sistema livremente.
+   - Tem total autonomia sobre a utilização do software.
+
 
 Proibição de Cópia, Modificação e Distribuição:
 
-É estritamente proibido copiar, modificar, fundir, publicar, distribuir, sublicenciar e/ou vender cópias do código-fonte ou do software, exceto em casos em que o código-fonte tenha sido adquirido. Se você adquirir o código-fonte do Daumzap, terá o direito de comercializá-lo, vender e sublicenciar o software livremente. Fora dessa condição, este software não pode ser modificado de forma alguma, incluindo, mas não se limitando a, descompilar, desmontar ou aplicar engenharia reversa.
+- Para a Licença Básica, é estritamente proibido copiar, modificar, fundir, publicar, distribuir, sublicenciar e/ou vender cópias do software.
+- Para a Licença Completa, o cliente pode comercializar, vender e sublicenciar livremente o software.
+- Fora dessas condições, qualquer tentativa de engenharia reversa, descompilação ou desmontagem do software é estritamente proibida.
 
 Isenção de Responsabilidade:
 
-Este software é fornecido "como está", sem qualquer tipo de garantia, expressa ou implícita. Os autores e detentores dos direitos não serão responsáveis por quaisquer reivindicações, danos ou outras obrigações decorrentes do uso do software.
+O software é fornecido "como está", sem qualquer tipo de garantia, expressa ou implícita. Os autores e detentores dos direitos não serão responsáveis por quaisquer reivindicações, danos ou outras obrigações decorrentes do uso do software.
+
+O Daumzap utiliza a API Baileys, que não é uma API oficial do WhatsApp. O cliente reconhece que o uso desta API pode violar as diretrizes do WhatsApp e que a Daumzap não se responsabiliza por possíveis bloqueios, restrições ou penalizações aplicadas pelo WhatsApp devido ao uso do software.
+
+
+Suporte e Assistência:
+
+- Ambas as licenças incluem suporte para a instalação inicial do software, sem custo adicional.
+- Qualquer outro suporte, como personalizações, manutenção ou consultoria, está sujeito a cobrança adicional.
+- O suporte adicional pode ser contratado separadamente mediante orçamento prévio.
+
 
 Serviços de Terceiros:
 
 O Daumzap utiliza diversos serviços de terceiros para seu funcionamento, incluindo, mas não se limitando a:
 
-Baileys - WhatsApp Web API
-Redis
-PostgreSQL
-Docker
-Nginx
-Node
-PM2
-Certbot
-Devido à dependência desses serviços de terceiros, o Daumzap não pode garantir 100% de disponibilidade ou pleno funcionamento contínuo do sistema. Eventuais falhas ou indisponibilidades dos serviços de terceiros podem impactar o desempenho e funcionamento do Daumzap.
+- Baileys - WhatsApp Web API
+- Redis
+- PostgreSQL
+- Docker
+- Nginx
+- Node.js
+- PM2
+- Certbot
+
+Devido à dependência desses serviços de terceiros, o Daumzap não pode garantir 100% de disponibilidade ou pleno funcionamento contínuo do sistema. Eventuais falhas ou indisponibilidades nos serviços de terceiros podem impactar o desempenho ou funcionamento do Daumzap.
+
 
 Solicitação de Licença:
 
 Para utilizar o sistema Daumzap, é necessário solicitar uma chave de licença através do e-mail: contato@daumzap.com.br.
 
+
 Conclusão:
 
 O uso do software Daumzap implica a aceitação incondicional dos termos desta licença. Qualquer violação dos termos resultará em medidas legais apropriadas.
 
-© [2024] Daumzap. Todos os direitos reservados.
+© 2024 Daumzap. Todos os direitos reservados.
