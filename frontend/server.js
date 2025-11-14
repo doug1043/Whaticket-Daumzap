@@ -30,8 +30,8 @@ app.get("/upgrade/upgrade-frontend", (req, res) => {
 });
 
 // Serve o index.html para qualquer rota não definida
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html")); // Serve o index.html para qualquer rota
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, () => {
