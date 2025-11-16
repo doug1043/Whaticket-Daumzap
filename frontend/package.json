@@ -1,6 +1,6 @@
 {
   "name": "daumzap-frontend",
-  "version": "3.3.2",
+  "version": "3.3.4",
   "private": true,
   "homepage": "/",
   "dependencies": {
