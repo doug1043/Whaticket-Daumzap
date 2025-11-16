@@ -44,14 +44,14 @@ Este projeto não é afiliado, associado, autorizado, endossado ou de qualquer f
 
 ## 📍 Baseado no Código de:
 
-- **Whaticket Community** por [Cassio Santos](https://github.com/canove/whaticket-community)
+- **Whaticket Community** por [canove](https://github.com/canove/whaticket-community)
 
 ---
 
 ## 🛠️ Ferramentas Utilizadas
 
-- **Baileys** - WhatsApp Web API (grátis)
-- **Redis**
+- **Baileys** - WhatsApp Web API (grátis) [whiskeysockets/baileys](https://github.com/WhiskeySockets/Baileys)
+- **Redis** 
 - **PostgreSQL**
 - **Docker**
 - **Nginx**
