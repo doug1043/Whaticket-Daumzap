@@ -9,6 +9,8 @@ Descubra como nossa solução integra o WhatsApp com **DialogFlow**, **N8N**, **
 ## 🚀 Recursos
 
 - 💼 Atendentes
+- 🔀 FlowBuilder
+- ☁️ Armazenamento em núvem (MinIO)
 - 🎯 Campanhas
 - 🗨️ Chat Interno
 - 🎨 Cores Personalizadas
