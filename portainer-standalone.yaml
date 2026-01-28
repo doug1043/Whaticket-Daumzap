@@ -2,8 +2,10 @@ services:
   whaticket_backend:
     image: whaticket-backend:latest
     depends_on:
-      - postgres_whaticket
-      - whaticket_redis
+      postgres_whaticket:
+        condition: service_healthy
+      whaticket_redis:
+        condition: service_started
     environment:
       - NODE_ENV=${NODE_ENV}
       - BACKEND_URL=${BACKEND_URL}
@@ -75,6 +77,12 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - TZ=${TZ}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     restart: always
     networks:
       - whaticket
