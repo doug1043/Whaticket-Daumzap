@@ -88,6 +88,11 @@ O site oficial do WhatsApp pode ser encontrado em [whatsapp.com](https://whatsap
 
 ---
 
+## Primeiro acesso
+
+- Usuário padrão: admin@daumzap.com
+- Senha: mudar@123
+
 ## 🛠️ Instalação
 
 Para instalar o Daumzap, utilize o instalador disponível no GitHub:
