@@ -8,28 +8,46 @@ Esta Licença de Uso regula os termos sob os quais você pode utilizar o softwar
 
 Uso de Licença:
 
-O uso deste software é permitido somente mediante a aquisição de uma licença comercial válida da Daumzap. Qualquer uso sem a devida licença é proibido. O software inclui uma fase de avaliação temporária e limitada, após a qual a continuidade do uso estará sujeita à obtenção de uma licença paga.
+O Daumzap está disponível em duas modalidades:
+
+Licença Básica (Gratuita)
+
+Licença Completa (Pagamento Único)
+
+A Licença Básica permite o uso do sistema gratuitamente, porém com recursos reduzidos e/ou limitados.
+
+A Licença Completa permite o desbloqueio de todos os recursos do sistema, incluindo funcionalidades avançadas e opções completas de personalização.
+
 Esta licença é válida apenas para o acesso ao instalador e à versão modificada do Whaticket, um projeto open source. A versão modificada é adaptada para permitir instalação local, uso de Docker com Portainer e tunelamento via Cloudflare.
-O Whaticket é um projeto open source, disponível no GitHub através do link https://github.com/canove/whaticket-community. A Daumzap fornece uma versão adaptada para facilitar a instalação e utilização em ambientes locais.
 
-Existem duas modalidades de licença:
+O Whaticket é um projeto open source, disponível no GitHub através do link:
+https://github.com/canove/whaticket-community
 
-1. Licença Básica:
-   - O cliente pode realizar instalações ilimitadas do software.
-   - O código é fornecido de forma ofuscada e não pode ser modificado.
-   - O cliente não pode revender ou sublicenciar a chave de acesso.
-   
-2. Licença Completa:
-   - O cliente recebe o código-fonte completo do software.
-   - Pode modificar, personalizar e revender o sistema livremente.
-   - Tem total autonomia sobre a utilização do software.
+A Daumzap fornece uma versão adaptada para facilitar a instalação e utilização em ambientes locais.
 
+Modalidades de Licença
+
+1. Licença Básica (Gratuita)
+- O cliente pode realizar a instalação e utilizar o software gratuitamente.
+- O sistema possui recursos reduzidos e/ou limitados.
+- O código é fornecido de forma ofuscada e não pode ser modificado.
+- Não inclui funcionalidades completas de personalização e recursos avançados.
+
+2. Licença Completa (Pagamento Único)
+- O cliente realiza o pagamento de um valor único, sem mensalidade.
+- A licença é válida para 1 (uma) instalação do sistema.
+- O cliente desbloqueia todos os recursos do software, incluindo:
+- Recursos completos de personalização
+
+Funcionalidades avançadas
+
+Possibilidade de uso comercial como SaaS (Software como Serviço)
+- O cliente poderá criar acessos para que terceiros (clientes finais) utilizem o sistema, desde que esta operação ocorra na instalação licenciada.
 
 Proibição de Cópia, Modificação e Distribuição:
+- É estritamente proibido realizar engenharia reversa, descompilação ou desmontagem do software, em qualquer modalidade de licença.
 
-- Para a Licença Básica, é estritamente proibido copiar, modificar, fundir, publicar, distribuir, sublicenciar e/ou vender cópias do software.
-- Para a Licença Completa, o cliente pode comercializar, vender e sublicenciar livremente o software.
-- Fora dessas condições, qualquer tentativa de engenharia reversa, descompilação ou desmontagem do software é estritamente proibida.
+O cliente pode revender ou redistribuir chaves/licenças de acesso, desde que entre em contato com a Daumzap através do e-mail: contato@daumzap.com.br para que o processo seja devidamente registrado e autorizado.
 
 Isenção de Responsabilidade:
 
@@ -39,10 +57,10 @@ O Daumzap utiliza a API Baileys, que não é uma API oficial do WhatsApp. O clie
 
 
 Suporte e Assistência:
-
-- Ambas as licenças incluem suporte para a instalação inicial do software, sem custo adicional.
+- O suporte para instalação não está incluso em nenhuma modalidade de licença.
+- Caso o cliente deseje suporte para instalação, este serviço poderá ser contratado separadamente.
 - Qualquer outro suporte, como personalizações, manutenção ou consultoria, está sujeito a cobrança adicional.
-- O suporte adicional pode ser contratado separadamente mediante orçamento prévio.
+- O suporte adicional pode ser contratado mediante orçamento prévio.
 
 
 Serviços de Terceiros:
@@ -64,6 +82,7 @@ Devido à dependência desses serviços de terceiros, o Daumzap não pode garant
 Solicitação de Licença:
 
 Para utilizar o sistema Daumzap, é necessário solicitar uma chave de licença através do e-mail: contato@daumzap.com.br.
+Ou pelo site: https://daumzap.com.br
 
 
 Conclusão:
