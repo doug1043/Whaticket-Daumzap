@@ -42,6 +42,8 @@
         height: auto;
         object-fit: contain; /* Mantém proporção */
         animation: float 3s ease-in-out infinite; /* Animação de flutuação */
+        opacity: 0;
+        transition: opacity 0.2s ease;
       }
 
       @keyframes float {
@@ -72,7 +74,7 @@
   </head>
   <body>
     <div id="splash-screen">
-      <img id="logo" src="/logo.png" alt="Logo" />
+      <img id="logo" alt="Logo" />
       <div class="loader">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">
           <path fill="none" stroke="#45C04F" stroke-width="15" stroke-linecap="round" stroke-dasharray="300 385" stroke-dashoffset="0" d="M275 75c0 31-27 50-50 50-58 0-92-100-150-100-28 0-50 22-50 50s23 50 50 50c58 0 92-100 150-100 24 0 50 19 50 50Z">
@@ -85,6 +87,35 @@
     <script>
       // Carrega a logo do white-label dinamicamente
       (function() {
+        var defaultLogo = '/logo.png';
+        var logoElement = document.getElementById('logo');
+
+        var applyLogo = function(logoUrl) {
+          var finalLogoUrl = logoUrl || defaultLogo;
+          var preload = new Image();
+
+          preload.onload = function() {
+            if (logoElement) {
+              logoElement.src = finalLogoUrl;
+              logoElement.style.opacity = '1';
+            }
+          };
+
+          preload.onerror = function() {
+            if (finalLogoUrl !== defaultLogo) {
+              applyLogo(defaultLogo);
+              return;
+            }
+
+            if (logoElement) {
+              logoElement.src = defaultLogo;
+              logoElement.style.opacity = '1';
+            }
+          };
+
+          preload.src = finalLogoUrl;
+        };
+
         // Obtém a URL do backend do localStorage ou usa fallback
         var backendUrl = localStorage.getItem('backendUrl');
         
@@ -117,17 +148,10 @@
                 if (!logoUrl.startsWith('http://') && !logoUrl.startsWith('https://')) {
                   logoUrl = backendUrl + '/public/' + logoUrl;
                 }
-                
-                // Testa se a imagem carrega antes de trocar
-                var img = new Image();
-                img.onload = function() {
-                  var logoElement = document.getElementById('logo');
-                  if (logoElement) {
-                    logoElement.src = logoUrl;
-                  }
-                };
-                // Se falhar (403, etc), mantém a logo padrão
-                img.src = logoUrl;
+
+                applyLogo(logoUrl);
+              } else {
+                applyLogo(defaultLogo);
               }
               
               // Atualiza o título da página se tiver appName
@@ -157,6 +181,7 @@
           })
           .catch(function(error) {
             // Silenciosamente mantém a logo padrão
+            applyLogo(defaultLogo);
           });
       })();
 
